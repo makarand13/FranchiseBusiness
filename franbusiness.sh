@@ -13,9 +13,7 @@
 #		cat $sitename.html | grep "<h4>" | head -n -3 | cut -f2 -d">" | cut -f1 -d"<"
 #done
 
-grep "<dd>" -A 3 bricks-4-kidz.html | grep -v "<dd>" | grep -v "</dd>" | sed -e 's/^[ \t]*//' | sed 's/<br\/>//g' | grep -v "\--" | sed '/^\s*$/d' | tr '\n' ',' > abc
-
-
+grep "<dd>" -A 3 bricks-4-kidz.html | grep -v "<dd>" | grep -v "</dd>" | sed -e 's/^[ \t]*//' | sed 's/<br\/>//g' | grep -v "\--" | sed '/^\s*$/d' > abc
 
 
 #From Notes
