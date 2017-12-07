@@ -1,0 +1,7 @@
+grep "<dd>" -A 3 bricks-4-kidz.html | grep -v "<dd>" | grep -v "</dd>" | sed -e 's/^[ \t]*//' | sed 's/<br\/>//g' | grep -v "\--" | sed '/^\s*$/d'
+
+Step 1 - Get all business names
+Step 2 - Curl each business URL to get HTML data
+Step 3 - Get Categories from each HTML
+Step 4 - Get a "union" of all categories to form a Master category list
+Step 5 - Scrape each HTML and match values for categories, and add null to missing ones
