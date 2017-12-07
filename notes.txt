@@ -1,7 +1,52 @@
 grep "<dd>" -A 3 bricks-4-kidz.html | grep -v "<dd>" | grep -v "</dd>" | sed -e 's/^[ \t]*//' | sed 's/<br\/>//g' | grep -v "\--" | sed '/^\s*$/d'
 
+Find Headings1 (dt tag)
+grep "<dt>" soul-origin-snapshot.html | cut -f2 -d">" | cut -f1 -d"<"
+
+Find Details (dd tag)
+grep "<dd>" -A 3 soul.html | grep -v "<dd>" | grep -v "</dd>" | grep . | grep -v "\--" | sed -e 's/^[ \t]*//' | sed 's/<br\/>//g'
+
+
+Franchises for scale
+
+Name - <h4>NSW - Stockland, Forster </h4>
+grep "<h4>" soul.html | grep "-" | cut -f2 -d">" | cut -f1 -d"<"
+
+
+Investment Required - <p><strong>Investment Required: <br></strong>$250,000 to $500,000</p>
+grep "<p>" soul.html | grep -i Investment | sed -n -e 's/^.*strong>//p' | cut -f1 -d"<"
+
+Description - <div class="company-description-summary">
+grep -A 1 company-description-summary soul.html | grep -v company-description-summary | grep -v "\--"
+
+
+
+
 Step 1 - Get all business names
 Step 2 - Curl each business URL to get HTML data
 Step 3 - Get Categories from each HTML
 Step 4 - Get a "union" of all categories to form a Master category list
 Step 5 - Scrape each HTML and match values for categories, and add null to missing ones
+
+Business Names - URL Context - Rules
+
+1 - Replace all spaces by hyphens - sed 's/ /-/g'
+2 - Replace all brackets by hyphens - sed 's/(/-/g'
+3 - Replace &#39; (Intended to be an apostrophe) by hyphen - sed 's/&#39;/-/g'
+4 - Replace &amp; (Intended to be an &) by hyphen - sed 's/&amp;/-/g'
+4 - Replace multiple hyphens to single hyphen - sed 's/--*/-/g'
+
+
+233 - e with accent - remove
+241 - n with accent - remove
+174 - Registered symbol - remove
+246 - o with accent - remove
+237 - i with accent - replace with i
+225 - a with accent - replace with a
+178 - e to the power 2 - as is
+!
+#
+?
+,
+.
+/
